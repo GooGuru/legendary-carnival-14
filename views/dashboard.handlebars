@@ -1,0 +1,23 @@
+{{> header}}
+
+<main>
+  <h2>Your Dashboard</h2>
+  {{#each posts}}
+    <article>
+      <h2>{{this.title}}</h2>
+      <p>{{this.createdAt}}</p>
+      <a href="/post/{{this.id}}">Edit Post</a>
+    </article>
+  {{else}}
+    <p>You haven't created any posts yet!</p>
+  {{/each}}
+
+  <button id="new-post-btn">Create New Post</button>
+  <form id="new-post-form" action="/api/posts" method="POST" style="display: none;">
+    <input type="text" name="title" placeholder="Post Title" required>
+    <textarea name="content" placeholder="Write your post here..." required></textarea>
+    <button type="submit">Publish</button>
+  </form>
+</main>
+
+{{> footer}}
